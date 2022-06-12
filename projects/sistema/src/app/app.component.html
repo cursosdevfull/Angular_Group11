@@ -1,0 +1,19 @@
+<amb-tablero></amb-tablero>
+<h3>App seleccionada: {{ selectedApp }}</h3>
+<amb-home
+  *ngFor="let titleApp of titlesApp"
+  [appName]="titleApp"
+  (onSelectedApp)="selectApp($event)"
+></amb-home>
+
+<!-- <amb-home [appName]="titlesApp[0]"></amb-home>
+<amb-home [appName]="titlesApp[1]"></amb-home>
+<amb-home [appName]="titlesApp[2]"></amb-home>
+<amb-home [appName]="titlesApp[3]"></amb-home>
+<amb-home [appName]="titlesApp[4]"></amb-home> -->
+
+<!-- <amb-home [appName]="titleApp01"></amb-home>
+<amb-home [appName]="titleApp02"></amb-home>
+<amb-home [appName]="titleApp03"></amb-home>
+<amb-home [appName]="titleApp04"></amb-home>
+<amb-home [appName]="titleApp05"></amb-home> -->
