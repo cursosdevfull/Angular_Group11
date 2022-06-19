@@ -1,6 +1,2 @@
-<p>listado works!</p>
-<amb-jugador
-  *ngFor="let nombreJugador of listaJugadores"
-  [nombre]="nombreJugador"
-  (onSelectedPlayer)="selectPlayer($event)"
-></amb-jugador>
+<h3>Listado</h3>
+<amb-dato *ngFor="let person of listStaff" [staff]="person"></amb-dato>

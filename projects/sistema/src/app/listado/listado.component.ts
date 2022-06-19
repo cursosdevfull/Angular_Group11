@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Person } from '../shared/interfaces/person.interface';
 
 @Component({
   selector: 'amb-listado',
@@ -6,14 +7,13 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   styleUrls: ['./listado.component.css'],
 })
 export class ListadoComponent implements OnInit {
-  @Input() listaJugadores: string[] = [];
-  @Output() onSelectedPlayer = new EventEmitter();
+  @Input() listStaff: Partial<Person>[] = [];
 
   constructor() {}
 
   ngOnInit(): void {}
 
-  selectPlayer(player: string) {
-    this.onSelectedPlayer.emit(player);
+  clone(staff: Partial<Person>): Partial<Person> {
+    return { ...staff };
   }
 }

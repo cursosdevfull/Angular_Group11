@@ -1,8 +1,0 @@
-<p>tablero works!</p>
-<p>Jugador seleccionado: {{ selectPlayer }}</p>
-<button (click)="mostrarOcultarListado()">{{ textoBoton }}</button>
-<amb-listado
-  [listaJugadores]="jugadores"
-  *ngIf="mostrarListado"
-  (onSelectedPlayer)="selectedPlayer($event)"
-></amb-listado>

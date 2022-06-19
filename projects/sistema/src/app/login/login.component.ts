@@ -1,4 +1,10 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  OnInit,
+  Output,
+  ViewEncapsulation,
+} from '@angular/core';
 
 @Component({
   selector: 'amb-login',
@@ -7,7 +13,13 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   encapsulation: ViewEncapsulation.Emulated,
 })
 export class LoginComponent implements OnInit {
+  @Output() onUserLogged = new EventEmitter<void>();
+
   constructor() {}
 
   ngOnInit(): void {}
+
+  login(): void {
+    this.onUserLogged.emit();
+  }
 }

@@ -1,4 +1,10 @@
 import { Component } from '@angular/core';
+import { Person, Persons } from './shared/interfaces/person.interface';
+
+type TPerson = {
+  name: string;
+  lastname: string;
+};
 
 @Component({
   selector: 'amb-root',
@@ -6,20 +12,38 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  title = 'sistema';
+  isLoginVisible = true;
+  isMenuVisible = false;
+  isListVisible = false;
 
-  titlesApp = ['App1.0', 'App2.0', 'App3.0', 'App4.0', 'App5.0'];
+  listMedics: Persons = [
+    { name: 'Javier', lastname: 'Pérez', age: 30 },
+    { name: 'Juan', lastname: 'Puerta' },
+    { name: 'José', lastname: 'Ramirez', age: 50 },
+  ];
 
-  selectedApp = 'None';
+  listDrivers: Array<Partial<Person>> = [
+    { name: 'Luis', lastname: 'Chang' },
+    { name: 'Alfredo', lastname: 'Aramburu', age: 34 },
+  ];
 
-  selectApp(appName: string) {
-    this.selectedApp = appName;
-    //console.log('App selected', appName);
+  listStaff: Persons = [];
+
+  userLogged() {
+    this.isLoginVisible = false;
+    this.isMenuVisible = true;
   }
 
-  /*  titleApp01 = 'App1.0';
-  titleApp02 = 'App2.0';
-  titleApp03 = 'App3.0';
-  titleApp04 = 'App4.0';
-  titleApp05 = 'App5.0'; */
+  showList(option: number) {
+    this.isListVisible = true;
+
+    if (option === 1) {
+      //this.listStaff = Object.assign([], this.listMedics);
+      this.listStaff = [...this.listMedics];
+      console.log('staff', this.listStaff);
+      console.log('medics', this.listMedics);
+    } else {
+      this.listStaff = this.listDrivers;
+    }
+  }
 }
