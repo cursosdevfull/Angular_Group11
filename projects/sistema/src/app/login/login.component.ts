@@ -5,6 +5,7 @@ import {
   Output,
   ViewEncapsulation,
 } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'amb-login',
@@ -15,11 +16,14 @@ import {
 export class LoginComponent implements OnInit {
   @Output() onUserLogged = new EventEmitter<void>();
 
-  constructor() {}
+  constructor(private router: Router) {}
 
   ngOnInit(): void {}
 
   login(): void {
-    this.onUserLogged.emit();
+    this.router.navigate(['/listado', 1]);
+    /*  this.router.navigate(["/listado/1"])
+    this.router.navigate(["/listado/" + 1]) */
+    //this.onUserLogged.emit();
   }
 }

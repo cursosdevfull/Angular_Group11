@@ -1,3 +1,2 @@
-<amb-login *ngIf="isLoginVisible" (onUserLogged)="userLogged()"></amb-login>
-<amb-menu *ngIf="isMenuVisible" (onShowList)="showList($event)"></amb-menu>
-<amb-listado *ngIf="isListVisible" [listStaff]="listStaff"></amb-listado>
+<amb-menu></amb-menu>
+<router-outlet></router-outlet>

@@ -16,6 +16,8 @@ export class AppComponent {
   isMenuVisible = false;
   isListVisible = false;
 
+  today = new Date();
+
   listMedics: Persons = [
     { name: 'Javier', lastname: 'Pérez', age: 30 },
     { name: 'Juan', lastname: 'Puerta' },
