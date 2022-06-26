@@ -12,6 +12,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { LogService } from './log.service';
 import { FotosComponent } from './fotos/fotos.component';
 import { HttpClientModule } from '@angular/common/http';
+import { CovidComponent } from './covid/covid.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { HttpClientModule } from '@angular/common/http';
     MenuComponent,
     DatoComponent,
     FotosComponent,
+    CovidComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [

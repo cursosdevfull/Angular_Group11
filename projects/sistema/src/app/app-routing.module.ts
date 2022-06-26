@@ -4,15 +4,13 @@ import { ListadoComponent } from './listado/listado.component';
 import { LoginComponent } from './login/login.component';
 import { MenuComponent } from './menu/menu.component';
 import { FotosComponent } from './fotos/fotos.component';
+import { CovidComponent } from './covid/covid.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
-  /* { path: 'menu', component: MenuComponent }, */
   { path: 'listado/:tipo', component: ListadoComponent },
   { path: 'fotos', component: FotosComponent },
-  // { path: 'listado', component: ListadoComponent },
-  /*   { path: 'medicos', component: ListadoComponent },
-  { path: 'pilotos', component: ListadoComponent }, */
+  { path: 'covid', component: CovidComponent },
   { path: '**', redirectTo: '' },
 ];
 

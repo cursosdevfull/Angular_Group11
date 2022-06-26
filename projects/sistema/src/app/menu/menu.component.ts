@@ -29,4 +29,8 @@ export class MenuComponent implements OnInit {
   showPhotos() {
     this.router.navigate(['/fotos']);
   }
+
+  showCovid() {
+    this.router.navigate(['/covid']);
+  }
 }
