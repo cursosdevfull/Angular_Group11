@@ -23,6 +23,7 @@
               "projects/sistema/src/assets"
             ],
             "styles": [
+              "projects/sistema/src/custom-theme.scss",
               "projects/sistema/src/styles.css"
             ],
             "scripts": []
