@@ -6,3 +6,15 @@
     Add medic
   </button>
 </amb-title>
+<amb-container>
+  <button mat-button color="primary" (click)="toggle('id')">ID</button>
+  <button mat-button color="primary" (click)="toggle('name')">Name</button>
+  <button mat-button color="primary" (click)="toggle('lastname')">
+    Lastname
+  </button>
+  <button (click)="infoAdditional.toggle()">Open</button>
+  <!-- <input type="text" (input)="search($event)" /> -->
+  <input type="text" #searchBox />
+  <amb-table [listFields]="listFields" [dataSource]="dataSource"></amb-table>
+  <mat-sidenav position="end" #infoAdditional>asdfasdsa</mat-sidenav>
+</amb-container>
