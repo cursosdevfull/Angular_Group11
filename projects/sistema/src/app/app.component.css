@@ -8,3 +8,14 @@ mat-sidenav {
   width: 280px;
   background-color: rgb(15, 23, 42);
 }
+
+div.logo {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 20px;
+}
+
+div.logo mat-icon {
+  width: 125px;
+  height: 125px;
+}

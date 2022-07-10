@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { TestComponent } from './test/test.component';
+import { PageLoginComponent } from './core/views/pages/page-login/page-login.component';
 
 const routes: Routes = [
-  { path: '', component: TestComponent },
+  { path: '', component: PageLoginComponent },
   {
     path: 'user',
     loadChildren: () =>

@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
+import { MetaColumn } from '../../interfaces/metacolumn.interface';
 
 @Component({
   selector: 'amb-table',
@@ -6,13 +7,17 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./table.component.css'],
 })
 export class TableComponent implements OnInit {
-  @Input() listFields = ['id', 'name', 'lastname'];
-  @Input() dataSource = [
-    { id: 1, name: 'sergio', lastname: 'hidalgo' },
-    { id: 2, name: 'claudia', lastname: 'cáceres' },
-  ];
+  listFields: any[] = [];
+  @Input() dataSource: any[] = [];
+  @Input() metaColumns: MetaColumn[] = [];
 
   constructor() {}
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['metaColumns']) {
+      this.listFields = this.metaColumns.map((el) => el.field);
+    }
+  }
 
   ngOnInit(): void {}
 

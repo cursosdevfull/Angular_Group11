@@ -1,9 +1,21 @@
 <amb-title>
-  <span moduleTitle>User</span>
-  <span moduleIcon>dashboard</span>
+  <!--   <span moduleTitle>User</span>
+  <span moduleIcon>dashboard</span> -->
   <button mat-flat-button color="primary" btnAction>
     <mat-icon>add</mat-icon>
     Add user
   </button>
 </amb-title>
-<amb-container> <amb-table></amb-table> </amb-container>
+<amb-container>
+  <perfect-scrollbar class="heightMaxPerfectScrollbar">
+    <amb-table
+      [metaColumns]="metaColumns"
+      [dataSource]="dataSource"
+    ></amb-table>
+  </perfect-scrollbar>
+  <amb-paginator
+    [length]="quantityRecords"
+    [pageSize]="pageSize"
+    (onChangePage)="getRecordsByPage($event)"
+  ></amb-paginator>
+</amb-container>

@@ -8,10 +8,29 @@ import { MatTableModule } from '@angular/material/table';
 import { ContainerComponent } from './components/container/container.component';
 import { TableComponent } from './components/table/table.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
+import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
+import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { PaginatorComponent } from './components/paginator/paginator.component';
 
+const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
+  //suppressScrollX: true,
+};
 @NgModule({
-  declarations: [TitleComponent, ContainerComponent, TableComponent],
-  imports: [CommonModule, MatIconModule, MatCardModule, MatTableModule],
+  declarations: [
+    TitleComponent,
+    ContainerComponent,
+    TableComponent,
+    PaginatorComponent,
+  ],
+  imports: [
+    CommonModule,
+    MatIconModule,
+    MatCardModule,
+    MatTableModule,
+    MatPaginatorModule,
+  ],
   exports: [
     TitleComponent,
     MatIconModule,
@@ -19,6 +38,14 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     ContainerComponent,
     TableComponent,
     MatSidenavModule,
+    PerfectScrollbarModule,
+    PaginatorComponent,
+  ],
+  providers: [
+    {
+      provide: PERFECT_SCROLLBAR_CONFIG,
+      useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG,
+    },
   ],
 })
 export class SharedModule {}

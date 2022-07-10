@@ -1,13 +1,9 @@
 <mat-sidenav-container>
   <mat-sidenav [opened]="isOpened" mode="side">
-    <h2>Sidenav</h2>
-    <a routerLink="/user">User</a>
-    <br />
-    <a routerLink="/medic">Medic</a>
-    <br />
-    <a routerLink="/driver">Driver</a>
-    <br />
-    <a routerLink="/history">History</a>
+    <div class="logo">
+      <mat-icon svgIcon="logo"></mat-icon>
+    </div>
+    <amb-menu></amb-menu>
   </mat-sidenav>
 
   <mat-sidenav-content>
