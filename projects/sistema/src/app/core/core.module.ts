@@ -6,16 +6,21 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
+import { MenuComponent } from './views/components/menu/menu.component';
+import { MatListModule } from '@angular/material/list';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
-  declarations: [HeaderComponent, SidebarComponent],
+  declarations: [HeaderComponent, SidebarComponent, MenuComponent],
   imports: [
     CommonModule,
     MatToolbarModule,
     MatButtonModule,
     MatIconModule,
     MatMenuModule,
+    MatListModule,
+    RouterModule,
   ],
-  exports: [HeaderComponent, SidebarComponent],
+  exports: [HeaderComponent, SidebarComponent, MenuComponent],
 })
 export class CoreModule {}

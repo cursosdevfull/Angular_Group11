@@ -23,7 +23,6 @@ export class IconService {
     private matIconRegistry: MatIconRegistry,
     private domSanitizer: DomSanitizer
   ) {
-    console.log('Registrando iconos');
     for (let icon of this.listIcons) {
       this.matIconRegistry.addSvgIcon(
         icon.name,
