@@ -1,2 +1,15 @@
-<form>Ingresar credenciales</form>
-<button mat-raised-button color="primary" (click)="login()">Ingresar</button>
+<form fxLayout="column">
+  <h1>Sistema de Historias Médicas</h1>
+  <h2>Credenciales</h2>
+  <mat-form-field appearance="outline">
+    <mat-label>Correo</mat-label>
+    <input type="text" matInput />
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Contraseña</mat-label>
+    <input type="password" matInput />
+  </mat-form-field>
+  <button mat-raised-button color="primary" (click)="login()" type="button">
+    Ingresar
+  </button>
+</form>
