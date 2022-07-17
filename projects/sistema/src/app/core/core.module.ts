@@ -12,7 +12,8 @@ import { RouterModule } from '@angular/router';
 import { PageLoginComponent } from './views/pages/page-login/page-login.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { LoginComponent } from './views/components/login/login.component';
-
+import { MatFormFieldModule } from '@angular/material/form-field';
+import {MatInputModule} from "@angular/material/input"
 @NgModule({
   declarations: [
     HeaderComponent,
@@ -28,6 +29,8 @@ import { LoginComponent } from './views/components/login/login.component';
     MatIconModule,
     MatMenuModule,
     MatListModule,
+    MatFormFieldModule,
+    MatInputModule,
     RouterModule,
     FlexLayoutModule,
   ],
