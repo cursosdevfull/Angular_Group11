@@ -11,6 +11,8 @@ import { IconService } from './shared/services/icon.service';
 import { MatIconModule } from '@angular/material/icon';
 import { MatPaginatorIntl } from '@angular/material/paginator';
 import { Paginator } from './shared/services/paginator.service';
+import { LayoutModule } from './config/injections/layout/modules/layout.module';
+import { layoutConstant } from './config/injections/layout/constants/layout.constant';
 
 @NgModule({
   declarations: [AppComponent, TestComponent],
@@ -22,6 +24,7 @@ import { Paginator } from './shared/services/paginator.service';
     BrowserAnimationsModule,
     MatSidenavModule,
     MatIconModule,
+    LayoutModule.forRoot(layoutConstant),
   ],
   bootstrap: [AppComponent],
   providers: [{ provide: MatPaginatorIntl, useClass: Paginator }],
