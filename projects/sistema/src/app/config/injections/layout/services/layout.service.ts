@@ -7,7 +7,7 @@ import { LAYOUT_TOKEN } from '../tokens/layout.token';
   providedIn: 'root',
 })
 export class LayoutService {
-  private configSubject: BehaviorSubject<ILayout>;
+  configSubject: BehaviorSubject<ILayout>;
 
   constructor(@Inject(LAYOUT_TOKEN) private config: ILayout) {
     this.configSubject = new BehaviorSubject<ILayout>(config);
