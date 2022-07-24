@@ -13,6 +13,7 @@ import { MatPaginatorIntl } from '@angular/material/paginator';
 import { Paginator } from './shared/services/paginator.service';
 import { LayoutModule } from './config/injections/layout/modules/layout.module';
 import { layoutConstant } from './config/injections/layout/constants/layout.constant';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent, TestComponent],
@@ -25,6 +26,7 @@ import { layoutConstant } from './config/injections/layout/constants/layout.cons
     MatSidenavModule,
     MatIconModule,
     LayoutModule.forRoot(layoutConstant),
+    ReactiveFormsModule,
   ],
   bootstrap: [AppComponent],
   providers: [{ provide: MatPaginatorIntl, useClass: Paginator }],

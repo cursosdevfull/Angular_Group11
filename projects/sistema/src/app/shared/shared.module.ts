@@ -13,6 +13,13 @@ import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { PaginatorComponent } from './components/paginator/paginator.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { UtilsService } from './services/utils.service';
+import { ConfirmComponent } from './components/confirm/confirm.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   //suppressScrollX: true,
@@ -23,6 +30,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     ContainerComponent,
     TableComponent,
     PaginatorComponent,
+    ConfirmComponent,
   ],
   imports: [
     CommonModule,
@@ -30,6 +38,9 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     MatCardModule,
     MatTableModule,
     MatPaginatorModule,
+    MatDialogModule,
+    MatButtonModule,
+    FlexLayoutModule,
   ],
   exports: [
     TitleComponent,
@@ -40,12 +51,19 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     MatSidenavModule,
     PerfectScrollbarModule,
     PaginatorComponent,
+    MatDialogModule,
+    MatToolbarModule,
+    FlexLayoutModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatTableModule,
   ],
   providers: [
     {
       provide: PERFECT_SCROLLBAR_CONFIG,
       useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG,
     },
+    UtilsService,
   ],
 })
 export class SharedModule {}
