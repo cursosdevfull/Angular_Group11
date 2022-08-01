@@ -1,61 +1,26 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { BaseComponent } from 'projects/sistema/src/app/shared/components/base/base-component';
+import { MetaColumn } from 'projects/sistema/src/app/shared/interfaces/metacolumn.interface';
 import { fromEvent } from 'rxjs';
 import { debounceTime, map } from 'rxjs/operators';
+import { MedicApplication } from '../../../application/medic.application';
+import { Medic } from '../../../domain/medic';
 
 @Component({
   selector: 'amb-page-list',
   templateUrl: './page-list.component.html',
   styleUrls: ['./page-list.component.css'],
 })
-export class PageListComponent implements OnInit {
-  @ViewChild('searchBox') searchBox!: ElementRef;
-
-  listFields: string[] = ['name', 'lastname', 'cmp'];
-  dataOriginal = [
-    { id: 1, name: 'Carlos', lastname: 'Ojeda', cmp: 25456, marked: false },
-    { id: 2, name: 'Pedro', lastname: 'Martin', cmp: 45678, marked: true },
+export class PageListComponent extends BaseComponent<Medic, MedicApplication> {
+  listFields: string[] = ['id', 'nombre', 'apellido', 'cmp'];
+  metaColumns: MetaColumn[] = [
+    { field: 'id', title: 'ID' },
+    { field: 'nombre', title: 'Nombre' },
+    { field: 'apellido', title: 'Apellido' },
+    { field: 'cmp', title: 'CMP' },
   ];
-  dataSource: any = [];
 
-  constructor() {
-    this.dataSource = [...this.dataOriginal];
+  constructor(medicApplication: MedicApplication) {
+    super(medicApplication);
   }
-
-  ngAfterViewInit() {
-    fromEvent(this.searchBox.nativeElement, 'keyup')
-      .pipe(debounceTime(500))
-      .subscribe((data: any) => this.search(data.target.value));
-  }
-
-  ngOnInit(): void {}
-
-  toggle(column: string) {
-    //const exists = this.listFields.findIndex((field) => field === column);
-
-    const existsColumn = this.listFields.indexOf('name');
-
-    if (existsColumn >= 0) {
-      this.listFields.splice(existsColumn, 1); // ["lastname", "cmp"]
-    } else {
-      this.listFields.push('name'); // ["lastname", "cmp", "name"]
-    }
-  }
-
-  search(valueToSearch: string) {
-    this.dataSource = [
-      ...this.dataOriginal.filter((el) =>
-        el.name.toLowerCase().includes(valueToSearch)
-      ),
-    ];
-  }
-
-  /* search(event: any) {
-    const value = event.target.value.toLowerCase();
-
-    this.dataSource = [
-      ...this.dataOriginal.filter((el) =>
-        el.name.toLowerCase().includes(value)
-      ),
-    ];
-  } */
 }

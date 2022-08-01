@@ -3,13 +3,15 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MetaColumn } from 'projects/sistema/src/app/shared/interfaces/metacolumn.interface';
 import { UtilsService } from 'projects/sistema/src/app/shared/services/utils.service';
 import { FormComponent } from '../../components/form/form.component';
+import { UserApplication } from '../../../application/user.application';
+import { BaseComponent } from 'projects/sistema/src/app/shared/components/base/base-component';
 
 @Component({
   selector: 'amb-page-list',
   templateUrl: './page-list.component.html',
   styleUrls: ['./page-list.component.css'],
 })
-export class PageListComponent implements OnInit {
+export class PageListComponent {
   listFields: string[] = ['id', 'name', 'lastname', 'cmp'];
   metaColumns: MetaColumn[] = [
     { field: 'id', title: 'ID' },
@@ -56,13 +58,17 @@ export class PageListComponent implements OnInit {
   pageSize = 15;
   currentPage = 0;
 
-  constructor(private readonly utilsService: UtilsService) {
+  constructor(
+    private readonly utilsService: UtilsService,
+    private readonly userApplication: UserApplication
+  ) {
     this.getRecordsByPage(0);
   }
 
   ngOnInit(): void {}
 
   getRecordsByPage(page: number) {
+    const data = this.userApplication.page(page);
     this.currentPage = page;
     this.dataSource = [
       ...this.dataOriginal.slice(

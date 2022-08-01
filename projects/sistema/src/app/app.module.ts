@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CoreModule } from './core/core.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -14,22 +14,56 @@ import { Paginator } from './shared/services/paginator.service';
 import { LayoutModule } from './config/injections/layout/modules/layout.module';
 import { layoutConstant } from './config/injections/layout/constants/layout.constant';
 import { ReactiveFormsModule } from '@angular/forms';
+import { UserApplication } from './user/application/user.application';
+import { UserInfrastructure } from './user/infrastructure/user.infrastructure';
+import { AuthApplication } from './core/application/auth.application';
+import { AuthInfrastructure } from './core/infrastructure/auth.infrastructure';
+import { StorageApplication } from './core/application/storage.application';
+import { StorageInfrastructure } from './core/infrastructure/storage.infrastructure';
+import { MedicApplication } from './medic/application/medic.application';
+import { MedicInfrastructure } from './medic/infrastructure/medic.infrastructure';
+import { TokenInterceptor } from './shared/interceptors/token.interceptor';
 
+const components = [AppComponent, TestComponent];
+const imports = [
+  BrowserModule,
+  AppRoutingModule,
+  HttpClientModule,
+  CoreModule,
+  BrowserAnimationsModule,
+  MatSidenavModule,
+  MatIconModule,
+  LayoutModule.forRoot(layoutConstant),
+  ReactiveFormsModule,
+  HttpClientModule,
+];
+const material = [{ provide: MatPaginatorIntl, useClass: Paginator }];
+const applications = [
+  UserApplication,
+  AuthApplication,
+  StorageApplication,
+  MedicApplication,
+];
+const infrastructures = [
+  UserInfrastructure,
+  AuthInfrastructure,
+  StorageInfrastructure,
+  MedicInfrastructure,
+];
+
+const interceptors = [
+  { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
+];
 @NgModule({
-  declarations: [AppComponent, TestComponent],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    CoreModule,
-    BrowserAnimationsModule,
-    MatSidenavModule,
-    MatIconModule,
-    LayoutModule.forRoot(layoutConstant),
-    ReactiveFormsModule,
-  ],
+  declarations: [...components],
+  imports: [...imports],
   bootstrap: [AppComponent],
-  providers: [{ provide: MatPaginatorIntl, useClass: Paginator }],
+  providers: [
+    ...material,
+    ...applications,
+    ...infrastructures,
+    ...interceptors,
+  ],
 })
 export class AppModule {
   constructor(private readonly iconService: IconService) {}

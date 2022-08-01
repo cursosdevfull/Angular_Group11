@@ -8,7 +8,6 @@ import { LayoutService } from 'projects/sistema/src/app/config/injections/layout
 })
 export class PageLoginComponent implements OnInit {
   constructor(private readonly layoutService: LayoutService) {
-    //this.layoutService.setConfiguration({ hideHeader: true, hideMenu: true });
     this.layoutService.configuration = { hideHeader: true, hideMenu: true };
   }
 
