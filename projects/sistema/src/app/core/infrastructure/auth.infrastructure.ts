@@ -14,6 +14,8 @@ export class AuthInfrastructure implements AuthRepository {
     return this.http.post<ITokens>(`${environment.apiUrl}/users/login`, auth);
   }
   getNewAccessToken(refreshToken: string): Observable<ITokens> {
-    throw new Error('Method not implemented.');
+    return this.http.get<ITokens>(
+      `${environment.apiUrl}/users/refresh/${refreshToken}`
+    );
   }
 }

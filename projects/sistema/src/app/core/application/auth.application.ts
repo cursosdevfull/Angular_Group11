@@ -1,5 +1,6 @@
 import { Inject, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { Auth } from '../domain/auth';
 import { AuthRepository } from '../domain/auth.repository';
 import { ITokens } from '../domain/tokens.interface';
@@ -43,5 +44,9 @@ export class AuthApplication {
     this.userLogged = false;
     this.storageApplication.clear();
     this.router.navigate(['/']);
+  }
+
+  getNewAccessToken(refreshToken: string): Observable<ITokens> {
+    return this.authRepository.getNewAccessToken(refreshToken);
   }
 }

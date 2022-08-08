@@ -23,6 +23,8 @@ import { StorageInfrastructure } from './core/infrastructure/storage.infrastruct
 import { MedicApplication } from './medic/application/medic.application';
 import { MedicInfrastructure } from './medic/infrastructure/medic.infrastructure';
 import { TokenInterceptor } from './shared/interceptors/token.interceptor';
+import { DriverApplication } from './driver/application/driver.application';
+import { DriverInfrastructure } from './driver/infrastructure/driver.infrastructure';
 
 const components = [AppComponent, TestComponent];
 const imports = [
@@ -43,12 +45,14 @@ const applications = [
   AuthApplication,
   StorageApplication,
   MedicApplication,
+  DriverApplication,
 ];
 const infrastructures = [
   UserInfrastructure,
   AuthInfrastructure,
   StorageInfrastructure,
   MedicInfrastructure,
+  DriverInfrastructure,
 ];
 
 const interceptors = [

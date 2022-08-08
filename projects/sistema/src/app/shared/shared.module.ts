@@ -20,6 +20,10 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { UtilsService } from './services/utils.service';
 import { ConfirmComponent } from './components/confirm/confirm.component';
+import { PhotoComponent } from './components/photo/photo.component';
+import { UploadDirective } from './directives/upload.directive';
+import { WebcamModule } from 'ngx-webcam';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   //suppressScrollX: true,
@@ -31,6 +35,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     TableComponent,
     PaginatorComponent,
     ConfirmComponent,
+    PhotoComponent,
+    UploadDirective,
   ],
   imports: [
     CommonModule,
@@ -41,6 +47,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     MatDialogModule,
     MatButtonModule,
     FlexLayoutModule,
+    WebcamModule,
+    MatSlideToggleModule,
   ],
   exports: [
     TitleComponent,
@@ -57,6 +65,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     MatFormFieldModule,
     MatInputModule,
     MatTableModule,
+    PhotoComponent,
   ],
   providers: [
     {
