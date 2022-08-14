@@ -5,6 +5,11 @@ import { environment } from '../../../../environments/environment';
 import { UtilsService } from '../../services/utils.service';
 import { MatDialogRef } from '@angular/material/dialog';
 
+enum TypeExport {
+  EXCEL = 'excel',
+  PDF = 'pdf',
+}
+
 export abstract class BaseComponent<
   Entity,
   Application extends IApplication<Entity>,
@@ -17,8 +22,11 @@ export abstract class BaseComponent<
   currentPage: number = 0;
   pageSize: number = environment.pageSize;
 
-  private application: Application;
+  protected filename: string = 'data';
+  protected sheetName: string = 'Sheet1';
+  protected titleReport: string = 'Título reporte';
 
+  private application: Application;
   protected dataSource: any[] = [];
 
   constructor(
@@ -49,6 +57,7 @@ export abstract class BaseComponent<
         if (response) {
           this.application.delete(row.id).subscribe(() => {
             this.getRecordsByPage(this.currentPage);
+            this.utilsService.showNotification('Registro eliminado');
           });
         }
       });
@@ -72,11 +81,33 @@ export abstract class BaseComponent<
       if (response.id) {
         this.application.update(response.id, response.record).subscribe(() => {
           this.getRecordsByPage(this.currentPage);
+          this.utilsService.showNotification('Registro actualizado');
         });
       } else {
         this.application.insert(response.record).subscribe(() => {
           this.getRecordsByPage(this.currentPage);
+          this.utilsService.showNotification('Registro insertado');
         });
+      }
+    });
+  }
+
+  protected export(type: string) {
+    this.application.list().subscribe((records: Entity[]) => {
+      if (type === TypeExport.EXCEL) {
+        this.utilsService.exportToExcel(
+          records,
+          this.metaColumns,
+          this.filename,
+          this.sheetName
+        );
+      } else if (type === TypeExport.PDF) {
+        this.utilsService.exportToPdf(
+          records,
+          this.metaColumns,
+          this.filename,
+          this.titleReport
+        );
       }
     });
   }

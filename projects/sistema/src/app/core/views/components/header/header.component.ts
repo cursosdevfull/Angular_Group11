@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { AuthApplication } from '../../../application/auth.application';
+import { StorageApplication } from '../../../application/storage.application';
 
 @Component({
   selector: 'amb-header',
@@ -8,9 +9,14 @@ import { AuthApplication } from '../../../application/auth.application';
 })
 export class HeaderComponent implements OnInit {
   @Output() onToggleMenu: EventEmitter<void> = new EventEmitter();
-  username = 'Sergio Hidalgo';
+  username: string;
 
-  constructor(private readonly auth: AuthApplication) {}
+  constructor(
+    private readonly auth: AuthApplication,
+    readonly storage: StorageApplication
+  ) {
+    this.username = storage.getFieldInToken('name') as string;
+  }
 
   ngOnInit(): void {}
 

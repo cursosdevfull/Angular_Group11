@@ -27,5 +27,8 @@ export class PageListComponent extends BaseComponent<
     protected override readonly utilsService: UtilsService
   ) {
     super(driverApplication, utilsService, FormComponent);
+    this.filename = 'Drivers';
+    this.sheetName = 'List';
+    this.titleReport = 'Medics';
   }
 }

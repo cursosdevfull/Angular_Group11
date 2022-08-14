@@ -18,6 +18,8 @@ export class IconService {
     { name: 'user', path: '../assets/icons/programador.svg' },
     { name: 'dashboard', path: '../assets/icons/tablero.svg' },
     { name: 'logo', path: '../assets/icons/logo.svg' },
+    { name: 'excel', path: '../assets/icons/excel.svg' },
+    { name: 'pdf', path: '../assets/icons/pdf.svg' },
   ];
 
   constructor(

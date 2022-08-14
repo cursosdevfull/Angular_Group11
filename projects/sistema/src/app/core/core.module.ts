@@ -15,6 +15,9 @@ import { LoginComponent } from './views/components/login/login.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
+import { UtilsService } from '../shared/services/utils.service';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 
 const components = [
   HeaderComponent,
@@ -35,12 +38,15 @@ const imports = [
   RouterModule,
   FlexLayoutModule,
   ReactiveFormsModule,
+  MatDialogModule,
+  MatSnackBarModule,
 ];
 const exports = [HeaderComponent, SidebarComponent, MenuComponent];
 @NgModule({
   declarations: [...components],
   imports: [...imports],
   exports: [...exports],
+  providers: [UtilsService],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class CoreModule {}

@@ -1,6 +1,7 @@
 import { Inject, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { UtilsService } from '../../shared/services/utils.service';
 import { Auth } from '../domain/auth';
 import { AuthRepository } from '../domain/auth.repository';
 import { ITokens } from '../domain/tokens.interface';
@@ -14,13 +15,14 @@ export class AuthApplication {
   constructor(
     @Inject(AuthInfrastructure) private readonly authRepository: AuthRepository,
     private readonly storageApplication: StorageApplication,
-    private readonly router: Router
+    private readonly router: Router,
+    private utilsService: UtilsService
   ) {}
 
   login(auth: Auth) {
     return this.authRepository.login(auth).subscribe({
       next: this.userAuthenticated.bind(this),
-      error: console.log,
+      error: this.showMessageError.bind(this),
     });
   }
 
@@ -31,6 +33,10 @@ export class AuthApplication {
     this.userLogged = true;
 
     this.router.navigate(['/driver']);
+  }
+
+  private showMessageError(error: any) {
+    this.utilsService.showNotification('Credenciales inválidas');
   }
 
   get isUserLogged(): boolean {

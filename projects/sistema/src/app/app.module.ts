@@ -25,6 +25,8 @@ import { MedicInfrastructure } from './medic/infrastructure/medic.infrastructure
 import { TokenInterceptor } from './shared/interceptors/token.interceptor';
 import { DriverApplication } from './driver/application/driver.application';
 import { DriverInfrastructure } from './driver/infrastructure/driver.infrastructure';
+import { RoleApplication } from './role/application/role.application';
+import { RoleInfrastructure } from './role/infrastructure/role.infrastructure';
 
 const components = [AppComponent, TestComponent];
 const imports = [
@@ -46,6 +48,7 @@ const applications = [
   StorageApplication,
   MedicApplication,
   DriverApplication,
+  RoleApplication,
 ];
 const infrastructures = [
   UserInfrastructure,
@@ -53,6 +56,7 @@ const infrastructures = [
   StorageInfrastructure,
   MedicInfrastructure,
   DriverInfrastructure,
+  RoleInfrastructure,
 ];
 
 const interceptors = [

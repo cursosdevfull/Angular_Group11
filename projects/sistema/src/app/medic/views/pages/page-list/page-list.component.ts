@@ -30,5 +30,7 @@ export class PageListComponent extends BaseComponent<
     protected override readonly utilsService: UtilsService
   ) {
     super(medicApplication, utilsService, FormComponent);
+    this.filename = 'Medics';
+    this.sheetName = 'List';
   }
 }
