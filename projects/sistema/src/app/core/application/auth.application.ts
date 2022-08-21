@@ -32,7 +32,7 @@ export class AuthApplication {
 
     this.userLogged = true;
 
-    this.router.navigate(['/driver']);
+    this.router.navigate(['/dashboard']);
   }
 
   private showMessageError(error: any) {

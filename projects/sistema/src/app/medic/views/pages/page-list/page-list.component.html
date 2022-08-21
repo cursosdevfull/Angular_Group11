@@ -1,12 +1,18 @@
 <amb-title>
-  <button mat-flat-button color="primary" btnAction (click)="showModalWindow()">
+  <button
+    mat-flat-button
+    color="primary"
+    btnAction
+    (click)="showModalWindow()"
+    *rolesAllowed="'MEDIC'"
+  >
     <mat-icon>add</mat-icon>
     Add medic
   </button>
 </amb-title>
 <amb-container>
   <perfect-scrollbar class="heightMaxPerfectScrollbar">
-    <amb-table [metaColumns]="metaColumns" [dataSource]="dataSource">
+    <dev-table [metaColumns]="metaColumns" [dataSource]="dataSource">
       <ng-container matColumnDef="actions">
         <th mat-header-cell *matHeaderCellDef></th>
         <td mat-cell *matCellDef="let row" class="text-align-right">
@@ -14,15 +20,21 @@
             mat-stroked-button
             color="primary"
             (click)="showModalWindow(row)"
+            *rolesAllowed="'ADMIN,MEDIC'"
           >
             <mat-icon>edit</mat-icon>
           </button>
-          <button mat-stroked-button color="accent" (click)="delete(row)">
+          <button
+            mat-stroked-button
+            color="accent"
+            (click)="delete(row)"
+            *rolesAllowed="'AUDITOR'"
+          >
             <mat-icon>delete</mat-icon>
           </button>
         </td>
       </ng-container>
-    </amb-table>
+    </dev-table>
   </perfect-scrollbar>
   <div fxLayout fxLayoutAlign="space-between center">
     <amb-keypad (onExport)="export($event)"></amb-keypad>
